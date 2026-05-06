@@ -203,18 +203,30 @@ document.querySelectorAll(".contact-form").forEach((form) => {
 
 function initCookieBanner() {
   const key = "seacoastpath_cookie_consent";
-  if (localStorage.getItem(key)) return;
+  const storage = (() => {
+    try {
+      window.localStorage.setItem("__cookie_test", "1");
+      window.localStorage.removeItem("__cookie_test");
+      return window.localStorage;
+    } catch {
+      return null;
+    }
+  })();
+  if (storage?.getItem(key)) return;
   const banner = document.createElement("section");
   banner.className = "cookie-banner";
   banner.setAttribute("aria-label", "Cookie consent");
-  banner.innerHTML = `<div><strong>Cookie preferences</strong><p>We use essential cookies and, with consent, analytics cookies to improve the website experience.</p><a href="cookie-policy.html">Read Cookie Policy</a></div><div class="cookie-actions"><button type="button" data-cookie="reject">Reject</button><button type="button" data-cookie="accept">Accept all</button></div>`;
+  banner.innerHTML = `<div class="cookie-copy"><strong>Cookie preferences</strong><p>We use essential cookies for website operation and optional analytics or marketing cookies only with your consent.</p><a href="cookie-policy.html">Read Cookie Policy</a></div><div class="cookie-actions"><button type="button" data-cookie="reject">Reject optional</button><button type="button" data-cookie="accept">Accept all</button></div>`;
   banner.addEventListener("click", (event) => {
     const button = event.target.closest("[data-cookie]");
     if (!button) return;
-    localStorage.setItem(key, JSON.stringify({ analytics: button.dataset.cookie === "accept", essential: true, savedAt: new Date().toISOString() }));
-    banner.remove();
+    storage?.setItem(key, JSON.stringify({ analytics: button.dataset.cookie === "accept", marketing: button.dataset.cookie === "accept", essential: true, savedAt: new Date().toISOString() }));
+    banner.classList.add("is-hiding");
+    window.setTimeout(() => banner.remove(), 220);
+    document.dispatchEvent(new CustomEvent("cookie-consent-change", { detail: { accepted: button.dataset.cookie === "accept" } }));
   });
   document.body.appendChild(banner);
+  window.requestAnimationFrame(() => banner.classList.add("is-visible"));
 }
 
 initCookieBanner();

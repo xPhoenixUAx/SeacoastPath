@@ -466,19 +466,56 @@ body:not(.home-page) .site-header {
   display: grid;
   grid-template-columns: 1fr auto;
   gap: 22px;
-  padding: 20px;
+  align-items: center;
+  padding: clamp(16px, 2vw, 22px);
   border: 1px solid rgba(255, 255, 255, 0.16);
-  border-radius: 18px;
-  background: rgba(18, 16, 31, 0.94);
+  border-radius: 24px;
+  background:
+    radial-gradient(circle at 100% 0, rgba(255, 175, 26, 0.18), transparent 18rem),
+    rgba(18, 16, 31, 0.95);
   color: #fff;
   backdrop-filter: blur(18px);
   box-shadow: 0 24px 80px rgba(0, 0, 0, 0.36);
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 220ms var(--ease), transform 220ms var(--ease);
+}
+
+.cookie-banner.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.cookie-banner.is-hiding {
+  opacity: 0;
+  transform: translateY(16px);
+  pointer-events: none;
+}
+
+.cookie-banner strong {
+  display: block;
+  color: #fff;
+  font-size: 1.02rem;
+  line-height: 1;
 }
 
 .cookie-banner p {
   margin: 6px 0;
   color: rgba(255, 255, 255, 0.76);
   font-weight: 700;
+  line-height: 1.45;
+}
+
+.cookie-banner a {
+  width: fit-content;
+  color: var(--sea);
+  font-weight: 900;
+  text-decoration: none;
+}
+
+.cookie-banner a:hover,
+.cookie-banner a:focus-visible {
+  color: #fff;
 }
 
 .cookie-actions {
@@ -489,19 +526,31 @@ body:not(.home-page) .site-header {
 }
 
 .cookie-actions button {
-  min-height: 40px;
-  padding: 0 15px;
+  min-height: 44px;
+  padding: 0 18px;
   border-radius: 999px;
   border: 1px solid rgba(255, 255, 255, 0.2);
   background: transparent;
   color: #fff;
   font-weight: 900;
+  transition: color 180ms var(--ease), background 180ms var(--ease), border-color 180ms var(--ease), transform 180ms var(--ease);
 }
 
 .cookie-actions [data-cookie="accept"] {
   background: var(--sea);
   color: var(--deep);
   border-color: var(--sea);
+}
+
+.cookie-actions button:hover,
+.cookie-actions button:focus-visible {
+  transform: translateY(-2px);
+  border-color: var(--sea);
+}
+
+.cookie-actions [data-cookie="reject"]:hover,
+.cookie-actions [data-cookie="reject"]:focus-visible {
+  color: var(--sea);
 }
 
 .marquee {
