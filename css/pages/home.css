@@ -80,21 +80,24 @@
 }
 
 .avatar-proof span {
-  width: 42px;
-  height: 42px;
-  margin-left: -18px;
-  border: 2px solid #fff;
+  width: 48px;
+  height: 48px;
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  border: 2px solid rgba(255, 255, 255, 0.9);
   border-radius: 50%;
-  background: var(--sea);
+  background:
+    radial-gradient(circle at 30% 24%, rgba(255, 255, 255, 0.46), transparent 32%),
+    var(--sea);
+  color: var(--deep);
+  box-shadow: 0 14px 34px rgba(255, 175, 26, 0.18);
 }
 
-.avatar-proof span:first-child {
-  margin-left: 0;
-  background: url("../../img/generated/testimonial-person.webp") center / cover;
-}
-
-.avatar-proof span:nth-child(2) {
-  background: url("../../img/generated/hero-person.webp") center / cover;
+.avatar-proof span svg {
+  width: 22px;
+  height: 22px;
+  stroke-width: 2.3;
 }
 
 .hero-figure {

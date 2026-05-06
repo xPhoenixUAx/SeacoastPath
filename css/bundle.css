@@ -191,16 +191,24 @@ body:not(.home-page) .site-header {
   height: 48px;
   display: none;
   place-items: center;
-  gap: 0;
   border-radius: 50%;
   border: 0;
   background: rgba(255, 255, 255, 0.06);
+  color: #fff;
+  transition: background 180ms var(--ease), color 180ms var(--ease), transform 180ms var(--ease);
 }
 
-.menu-toggle span {
-  width: 28px;
-  height: 1px;
-  background: #fff;
+.menu-toggle svg {
+  width: 22px;
+  height: 22px;
+  stroke-width: 2.2;
+}
+
+.menu-toggle:hover,
+.menu-toggle:focus-visible {
+  background: var(--sea);
+  color: var(--deep);
+  transform: translateY(-1px);
 }
 
 .menu-overlay {
