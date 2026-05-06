@@ -3,7 +3,7 @@
 }
 
 .detail-intro {
-  padding: clamp(72px, 9vw, 120px) 0 44px;
+  padding: clamp(58px, 7vw, 92px) 0 34px;
 }
 
 .detail-flow {
@@ -12,7 +12,7 @@
 
 .detail-side-image {
   float: right;
-  width: min(42vw, 520px);
+  width: min(38vw, 480px);
   margin: 0 0 34px clamp(28px, 5vw, 70px);
   overflow: hidden;
   border-radius: 28px;
@@ -27,21 +27,21 @@
 
 .detail-flow h2 {
   margin: 16px 0 20px;
-  font-size: clamp(2.8rem, 6vw, 6.1rem);
-  line-height: 0.96;
-  letter-spacing: -0.055em;
+  font-size: clamp(2rem, 4.2vw, 4.2rem);
+  line-height: 1.02;
+  letter-spacing: -0.05em;
 }
 
 .lead {
   max-width: 940px;
   color: var(--muted);
-  font-size: clamp(1.05rem, 1.5vw, 1.35rem);
-  line-height: 1.62;
-  font-weight: 760;
+  font-size: clamp(0.98rem, 1.2vw, 1.14rem);
+  line-height: 1.68;
+  font-weight: 700;
 }
 
 .detail-grid {
-  padding: 44px 0 clamp(76px, 10vw, 130px);
+  padding: 36px 0 clamp(68px, 8vw, 110px);
   display: grid;
   grid-template-columns: 280px minmax(0, 1fr);
   gap: clamp(34px, 7vw, 100px);
@@ -70,25 +70,25 @@
 
 .detail-main {
   display: grid;
-  gap: 42px;
+  gap: 34px;
 }
 
 .content-block {
-  padding-bottom: 42px;
+  padding-bottom: 34px;
   border-bottom: 1px solid var(--line);
 }
 
 .content-block h3 {
   margin: 0 0 16px;
-  font-size: clamp(1.85rem, 3vw, 3rem);
+  font-size: clamp(1.35rem, 2.1vw, 2.1rem);
   letter-spacing: -0.04em;
 }
 
 .content-block p,
 .content-block li {
   color: var(--muted);
-  line-height: 1.62;
-  font-weight: 720;
+  line-height: 1.66;
+  font-weight: 680;
 }
 
 .two-col-list {
@@ -107,7 +107,7 @@
 }
 
 .detail-cta {
-  padding: clamp(90px, 12vw, 170px) 0;
+  padding: clamp(72px, 9vw, 126px) 0;
   color: #fff;
   background:
     radial-gradient(circle at 82% 18%, rgba(255, 175, 26, 0.22), transparent 28rem),
@@ -118,8 +118,8 @@
 .detail-cta h2 {
   max-width: 900px;
   margin: 14px 0 24px;
-  font-size: clamp(2.5rem, 5.6vw, 5.8rem);
-  line-height: 0.98;
+  font-size: clamp(2rem, 4.3vw, 4.3rem);
+  line-height: 1.02;
   letter-spacing: -0.055em;
 }
 

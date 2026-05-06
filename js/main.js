@@ -151,6 +151,44 @@ document.querySelectorAll(".faq-item").forEach((item) => {
   });
 });
 
+document.querySelectorAll("[data-testimonial-slider]").forEach((slider) => {
+  const slides = [...slider.querySelectorAll(".testimonial-slide")];
+  const buttons = [...slider.querySelectorAll(".testimonial-controls button")];
+  const dotsWrap = slider.querySelector(".testimonial-dots");
+  if (!slides.length || buttons.length < 2 || !dotsWrap) return;
+
+  let index = 0;
+  let timer;
+  const dots = slides.map((_, dotIndex) => {
+    const dot = document.createElement("span");
+    dot.className = dotIndex === 0 ? "is-active" : "";
+    dotsWrap.appendChild(dot);
+    return dot;
+  });
+
+  const showSlide = (nextIndex) => {
+    index = (nextIndex + slides.length) % slides.length;
+    slides.forEach((slide, slideIndex) => slide.classList.toggle("is-active", slideIndex === index));
+    dots.forEach((dot, dotIndex) => dot.classList.toggle("is-active", dotIndex === index));
+  };
+
+  const restart = () => {
+    if (timer) window.clearInterval(timer);
+    if (!prefersReduced) timer = window.setInterval(() => showSlide(index + 1), 6800);
+  };
+
+  buttons[0].addEventListener("click", () => {
+    showSlide(index - 1);
+    restart();
+  });
+  buttons[1].addEventListener("click", () => {
+    showSlide(index + 1);
+    restart();
+  });
+
+  restart();
+});
+
 document.querySelectorAll(".contact-form").forEach((form) => {
   const note = form.querySelector(".form-note");
   const params = new URLSearchParams(window.location.search);

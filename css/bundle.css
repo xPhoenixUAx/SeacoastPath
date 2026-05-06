@@ -39,35 +39,33 @@ body:not(.home-page) .site-header {
 }
 
 .brand-mark {
-  width: 38px;
-  height: 38px;
+  width: 44px;
+  height: 44px;
   flex: 0 0 auto;
-  border-radius: 11px;
-  background:
-    linear-gradient(90deg, transparent 0 8px, var(--sea) 8px 14px, transparent 14px),
-    linear-gradient(0deg, transparent 0 8px, var(--sea) 8px 14px, transparent 14px),
-    radial-gradient(circle at 72% 28%, #fff 0 4px, transparent 5px),
-    var(--sea);
-  box-shadow: inset 0 0 0 8px rgba(18, 16, 31, 0.88);
+  display: block;
+  border-radius: 16px;
+  background: url("../img/common/logo-mark.svg") center / contain no-repeat;
+  filter: drop-shadow(0 12px 22px rgba(255, 175, 26, 0.12));
 }
 
 .brand-text {
   display: grid;
-  gap: 1px;
+  gap: 2px;
   color: #fff;
-  font-size: 1.05rem;
-  line-height: 0.94;
-  letter-spacing: -0.025em;
+  font-size: 1.08rem;
+  line-height: 0.92;
+  letter-spacing: -0.045em;
 }
 
 .brand-text small {
   display: block;
   margin-top: 0;
-  color: currentColor;
-  font-size: 0.58em;
+  color: var(--sea);
+  font-size: 0.5em;
   line-height: 1;
-  letter-spacing: 0.08em;
-  opacity: 0.78;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  opacity: 0.95;
 }
 
 .header-brand {
@@ -88,6 +86,9 @@ body:not(.home-page) .site-header {
 }
 
 .desktop-nav a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   color: rgba(255, 255, 255, 0.82);
   font-size: 0.74rem;
   font-weight: 950;
@@ -96,9 +97,70 @@ body:not(.home-page) .site-header {
   transition: color 180ms var(--ease);
 }
 
+.desktop-nav a svg {
+  width: 13px;
+  height: 13px;
+  transition: transform 180ms var(--ease);
+}
+
 .desktop-nav a:hover,
 .desktop-nav a[aria-current="page"] {
   color: var(--sea);
+}
+
+.desktop-dropdown {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  align-self: stretch;
+}
+
+.desktop-dropdown-menu {
+  position: absolute;
+  left: 50%;
+  top: calc(100% - 6px);
+  min-width: 260px;
+  padding: 12px;
+  display: grid;
+  gap: 2px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 18px;
+  background: rgba(18, 16, 31, 0.94);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.24);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  opacity: 0;
+  visibility: hidden;
+  transform: translate(-50%, 10px);
+  transition: opacity 180ms var(--ease), transform 180ms var(--ease), visibility 180ms var(--ease);
+}
+
+.desktop-dropdown-menu a {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 12px;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 0.78rem;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.desktop-dropdown-menu a:hover,
+.desktop-dropdown-menu a[aria-current="page"] {
+  background: rgba(255, 175, 26, 0.1);
+  color: var(--sea);
+}
+
+.desktop-dropdown:hover > a svg,
+.desktop-dropdown:focus-within > a svg {
+  transform: rotate(180deg);
+}
+
+.desktop-dropdown:hover .desktop-dropdown-menu,
+.desktop-dropdown:focus-within .desktop-dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, 0);
 }
 
 .header-actions {
@@ -322,7 +384,7 @@ body:not(.home-page) .site-header {
 }
 
 .site-footer {
-  padding: 74px 0 28px;
+  padding: clamp(108px, 11vw, 150px) 0 28px;
   background: var(--deep);
   color: #fff;
 }
@@ -345,6 +407,36 @@ body:not(.home-page) .site-header {
   display: grid;
   gap: 10px;
   align-content: start;
+}
+
+.footer-col a {
+  position: relative;
+  width: fit-content;
+  transition: color 180ms var(--ease), transform 180ms var(--ease);
+}
+
+.footer-col a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -3px;
+  height: 1px;
+  background: var(--sea);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 220ms var(--ease);
+}
+
+.footer-col a:hover,
+.footer-col a:focus-visible {
+  color: var(--sea);
+  transform: translateX(4px);
+}
+
+.footer-col a:hover::after,
+.footer-col a:focus-visible::after {
+  transform: scaleX(1);
 }
 
 .footer-col h3 {
@@ -550,6 +642,12 @@ body:not(.home-page) .site-header {
 }
 
 @media (max-width: 640px) {
+  .brand-mark {
+    width: 38px;
+    height: 38px;
+    border-radius: 13px;
+  }
+
   .brand-text small {
     display: none;
   }

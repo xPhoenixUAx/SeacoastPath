@@ -2,186 +2,271 @@
   background: var(--paper);
 }
 
-.about-philosophy {
-  padding: clamp(74px, 10vw, 130px) 0;
+.about-showcase {
+  padding: clamp(72px, 9vw, 124px) 0 clamp(54px, 7vw, 88px);
+  background:
+    radial-gradient(circle at 14% 18%, rgba(255, 175, 26, 0.12), transparent 28%),
+    var(--paper);
 }
 
-.about-split {
+.about-showcase-grid {
   display: grid;
-  grid-template-columns: minmax(0, 0.9fr) minmax(340px, 0.78fr);
-  gap: clamp(34px, 7vw, 96px);
+  grid-template-columns: minmax(320px, 0.92fr) minmax(0, 0.9fr);
+  gap: clamp(42px, 7vw, 104px);
   align-items: center;
 }
 
-.about-split h2 {
-  margin: 14px 0 22px;
-  font-size: clamp(2.5rem, 5.4vw, 5.4rem);
-  line-height: 0.98;
+.about-collage {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(12px, 1.6vw, 18px);
+}
+
+.about-collage img {
+  width: 100%;
+  object-fit: cover;
+  border-radius: 24px;
+  box-shadow: 0 18px 48px rgba(18, 16, 31, 0.08);
+}
+
+.about-collage img:first-child {
+  grid-row: span 2;
+  height: clamp(350px, 38vw, 520px);
+  align-self: end;
+}
+
+.about-collage img:nth-child(2),
+.about-collage img:nth-child(3) {
+  height: clamp(166px, 18vw, 250px);
+}
+
+.about-badge {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: clamp(112px, 11vw, 150px);
+  height: clamp(112px, 11vw, 150px);
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--sea);
+  color: var(--deep);
+  transform: translate(-50%, -50%) rotate(-12deg);
+  box-shadow: 0 20px 54px rgba(255, 175, 26, 0.25);
+}
+
+.about-badge span {
+  max-width: 86px;
+  text-align: center;
+  font-size: 0.78rem;
+  line-height: 1.05;
+  font-weight: 950;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.about-showcase-copy h2 {
+  margin: 12px 0 20px;
+  color: var(--deep);
+  font-size: clamp(2rem, 4.35vw, 4.55rem);
+  line-height: 1.02;
   letter-spacing: -0.055em;
 }
 
-.about-split p {
+.about-showcase-copy p {
+  max-width: 680px;
   color: var(--muted);
-  font-size: 1.05rem;
-  line-height: 1.65;
-  font-weight: 720;
+  line-height: 1.68;
+  font-weight: 680;
 }
 
-.about-image {
-  overflow: hidden;
-  border-radius: 28px;
-  aspect-ratio: 0.95;
+.experience-chip {
+  max-width: 620px;
+  margin-top: 30px;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  padding: 18px 22px;
+  border: 1px solid rgba(32, 33, 38, 0.08);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.72);
+  box-shadow: 0 18px 48px rgba(18, 16, 31, 0.055);
 }
 
-.about-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+.experience-chip svg {
+  width: 46px;
+  height: 46px;
+  flex: 0 0 46px;
+  padding: 11px;
+  border-radius: 50%;
+  background: var(--sea);
+  color: var(--deep);
 }
 
-.principles {
-  padding: clamp(70px, 9vw, 120px) 0;
+.experience-chip strong {
+  color: var(--deep);
+  line-height: 1.35;
+}
+
+.about-approach {
+  padding: clamp(40px, 6vw, 72px) 0 clamp(80px, 10vw, 140px);
   background: var(--paper);
 }
 
-.principle-grid {
+.about-approach .container {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(54px, 7vw, 86px) clamp(28px, 5vw, 64px);
+  border-radius: 36px;
+  color: #fff;
+  background:
+    radial-gradient(circle at 12% 88%, rgba(255, 175, 26, 0.22), transparent 24rem),
+    radial-gradient(circle at 92% 18%, rgba(255, 175, 26, 0.16), transparent 22rem),
+    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    #17162c;
+  background-size: auto, auto, 76px 76px, 76px 76px, auto;
+  box-shadow: 0 30px 90px rgba(18, 16, 31, 0.16);
+}
+
+.about-approach .container::before {
+  content: "FLOW";
+  position: absolute;
+  right: -0.08em;
+  top: -0.16em;
+  color: rgba(255, 255, 255, 0.045);
+  font-size: clamp(7rem, 16vw, 18rem);
+  line-height: 1;
+  font-weight: 950;
+  letter-spacing: -0.08em;
+  pointer-events: none;
+}
+
+.approach-head {
+  position: relative;
+  z-index: 1;
+  max-width: 720px;
+  margin: 0 auto clamp(34px, 5vw, 58px);
+  text-align: center;
+}
+
+.approach-head h2 {
+  margin: 12px 0 0;
+  font-size: clamp(2rem, 4vw, 4.1rem);
+  line-height: 1.02;
+  letter-spacing: -0.055em;
+}
+
+.approach-grid {
+  position: relative;
+  z-index: 1;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  margin-top: 38px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(16px, 2vw, 24px);
 }
 
-.principle-card {
-  min-height: 260px;
-  padding: 26px;
-  border-radius: 24px;
-  background: #fff;
+.approach-card {
+  position: relative;
+  min-height: 310px;
+  padding: clamp(24px, 3vw, 34px);
+  border: 1px solid rgba(255, 255, 255, 0.11);
+  border-radius: 18px;
+  background:
+    radial-gradient(circle at 10% 82%, rgba(255, 175, 26, 0.2), transparent 48%),
+    rgba(255, 255, 255, 0.055);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  overflow: hidden;
 }
 
-.principle-card h3 {
-  font-size: 1.7rem;
+.approach-card > span {
+  position: absolute;
+  right: 22px;
+  top: -18px;
+  min-width: 70px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  font-size: 1.3rem;
+  font-weight: 850;
+  backdrop-filter: blur(14px);
+}
+
+.approach-card h3 {
+  margin: 34px 0 22px;
+  font-size: clamp(1.1rem, 1.5vw, 1.38rem);
   letter-spacing: -0.035em;
 }
 
-.principle-card p {
-  color: var(--muted);
-  line-height: 1.55;
-  font-weight: 720;
+.approach-card ul {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 12px;
+  list-style: none;
 }
 
-.faq-section {
-  padding: clamp(74px, 10vw, 130px) 0;
-  background: var(--paper);
-}
-
-.testimonials {
-  overflow: hidden;
-  color: #fff;
-  background:
-    radial-gradient(circle at 82% 18%, rgba(255, 175, 26, 0.22), transparent 28rem),
-    linear-gradient(rgba(18, 16, 31, 0.7), rgba(18, 16, 31, 0.84)),
-    url("../../img/generated/planning-desk.webp") center / cover fixed;
-}
-
-.testimonial-head {
-  display: flex;
-  justify-content: space-between;
-  gap: 28px;
-  align-items: end;
-  margin-bottom: 42px;
-}
-
-.testimonial-head h2 {
-  max-width: 780px;
-  margin: 14px 0 0;
-  font-size: clamp(2.3rem, 5vw, 5.1rem);
-  line-height: 0.98;
-  letter-spacing: -0.052em;
-}
-
-.rating {
-  font-size: 1.25rem;
-  font-weight: 950;
-}
-
-.rating span {
-  color: var(--coral);
-}
-
-.testimonial-rail {
-  display: flex;
-  width: max-content;
-  gap: 20px;
-  animation: marquee 34s linear infinite;
-}
-
-.testimonial-card {
-  width: min(76vw, 420px);
-  min-height: 280px;
-  padding: 34px;
-  border: 1px solid var(--white-line);
-  border-radius: 18px;
-  background: rgba(255, 255, 255, 0.12);
-  backdrop-filter: blur(18px);
-}
-
-.quote-mark {
-  display: block;
-  margin-bottom: 14px;
-  color: var(--coral);
-  font-size: 4rem;
-  line-height: 0.65;
-  font-weight: 950;
-}
-
-.testimonial-card p {
-  font-size: 1.08rem;
-  line-height: 1.45;
+.approach-card li {
+  width: fit-content;
+  padding: 9px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 999px;
+  color: rgba(255, 255, 255, 0.86);
+  font-size: 0.78rem;
   font-weight: 850;
 }
 
-.testimonial-card strong {
-  display: block;
-  margin-top: 24px;
+.approach-card > i,
+.approach-card > svg {
+  position: absolute;
+  right: 20px;
+  bottom: 18px;
+  width: 112px;
+  height: 112px;
+  padding: 28px;
+  border-radius: 32px;
+  background: rgba(255, 175, 26, 0.12);
+  color: var(--sea);
+  transform: rotate(-10deg);
 }
 
-.home-cta {
-  padding: clamp(90px, 12vw, 170px) 0;
-  color: #fff;
-  background:
-    radial-gradient(circle at 80% 20%, rgba(255, 175, 26, 0.22), transparent 28rem),
-    linear-gradient(90deg, rgba(18, 16, 31, 0.86), rgba(18, 16, 31, 0.34)),
-    url("../../img/generated/strategy-room.webp") center / cover fixed;
-}
-
-.cta-content {
-  max-width: 980px;
-}
-
-.cta-content h2 {
-  margin: 16px 0 26px;
-  font-size: clamp(2.5rem, 5.6vw, 5.8rem);
-  line-height: 0.98;
-  letter-spacing: -0.055em;
-}
-
-.faq-layout {
-  display: grid;
-  grid-template-columns: 0.7fr 1fr;
-  gap: clamp(34px, 7vw, 100px);
-}
-
-.faq-layout h2 {
-  margin: 14px 0;
-  font-size: clamp(2.4rem, 5vw, 5rem);
-  line-height: 0.98;
-  letter-spacing: -0.052em;
-}
-
-@media (max-width: 900px) {
-  .about-split,
-  .faq-layout,
-  .principle-grid {
+@media (max-width: 980px) {
+  .about-showcase-grid,
+  .approach-grid {
     grid-template-columns: 1fr;
+  }
+
+  .about-collage {
+    max-width: 680px;
+  }
+}
+
+@media (max-width: 640px) {
+  .about-collage {
+    grid-template-columns: 1fr;
+  }
+
+  .about-collage img:first-child,
+  .about-collage img:nth-child(2),
+  .about-collage img:nth-child(3) {
+    height: 250px;
+  }
+
+  .about-badge {
+    left: auto;
+    right: 16px;
+    top: 16px;
+    transform: rotate(-10deg);
+  }
+
+  .experience-chip {
+    align-items: flex-start;
+    border-radius: 24px;
   }
 }
