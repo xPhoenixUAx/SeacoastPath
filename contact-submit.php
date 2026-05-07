@@ -1,7 +1,23 @@
 <?php
 declare(strict_types=1);
 
-$recipient = 'support@seacoastpath.com';
+$settingsFile = __DIR__ . '/js/site-config.js';
+$settings = [
+    'companyName' => 'SeacoastPath s.r.o.',
+    'website' => 'seacoastpath.com',
+    'email' => 'support@seacoastpath.com',
+];
+
+if (is_readable($settingsFile)) {
+    $settingsSource = (string)file_get_contents($settingsFile);
+    foreach ($settings as $key => $fallback) {
+        if (preg_match('/' . preg_quote($key, '/') . '\s*:\s*"([^"]+)"/', $settingsSource, $match)) {
+            $settings[$key] = $match[1];
+        }
+    }
+}
+
+$recipient = $settings['email'];
 $redirectBase = 'contact.html#contactForm';
 
 function clean_value(string $value): string {
@@ -24,7 +40,6 @@ $name = clean_value((string)($_POST['name'] ?? ''));
 $email = filter_var((string)($_POST['email'] ?? ''), FILTER_VALIDATE_EMAIL);
 $company = clean_value((string)($_POST['company'] ?? ''));
 $interest = clean_value((string)($_POST['interest'] ?? ''));
-$website = clean_value((string)($_POST['website'] ?? ''));
 $message = trim((string)($_POST['message'] ?? ''));
 
 if ($name === '' || !$email || $interest === '' || $message === '') {
@@ -34,16 +49,16 @@ if ($name === '' || !$email || $interest === '' || $message === '') {
 
 $safeMessage = trim(str_replace("\r", '', $message));
 $subject = 'New SeacoastPath inquiry: ' . $interest;
-$body = "New inquiry from seacoastpath.com\n\n"
+$body = "New inquiry from {$settings['website']}\n\n"
     . "Name: {$name}\n"
     . "Email: {$email}\n"
     . "Company: {$company}\n"
     . "Interest: {$interest}\n"
-    . "Website: {$website}\n\n"
+    . "\n"
     . "Message:\n{$safeMessage}\n";
 
 $headers = [
-    'From: SeacoastPath Website <support@seacoastpath.com>',
+    'From: ' . $settings['companyName'] . ' Website <' . $settings['email'] . '>',
     'Reply-To: ' . $email,
     'Content-Type: text/plain; charset=UTF-8',
     'X-Mailer: PHP/' . phpversion(),

@@ -59,7 +59,7 @@ function applySiteSettings() {
     if (websiteLine) websiteLine.textContent = website;
   });
   document.querySelectorAll(".footer-bottom span:first-child").forEach((el) => {
-    el.textContent = `Copyright ${siteSettings.copyrightYear || "2026"} ${footerCompanyParts.join(" · ")}. All rights reserved.`;
+    el.textContent = `Copyright ${siteSettings.copyrightYear || "2026"} ${footerCompanyParts.join(" | ")}. All rights reserved.`;
   });
   document.querySelectorAll(".footer-bottom span:last-child").forEach((el) => {
     if (siteSettings.footerBottomLine) el.textContent = siteSettings.footerBottomLine;
